@@ -1,0 +1,21 @@
+table{
+    border: 1px;
+}
+
+table td{
+    padding: 3px;
+    border: 1px solid #777;
+    margin: 3px;    
+}
+a {
+    background: cornflowerblue;
+    padding: 3px 5px;
+    margin: 10px;
+    box-shadow: 1px 1px;
+}
+
+a:hover {
+    background: darkorchid;
+    color: #fff;
+    box-shadow: 1px 1px;
+}

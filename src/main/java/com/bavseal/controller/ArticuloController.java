@@ -3,9 +3,14 @@ package com.bavseal.controller;
 import com.bavseal.model.Articulo;
 import com.bavseal.model.TipoDeArticulo;
 import com.bavseal.repository.DAO;
+import java.io.Serializable;
+import java.util.ArrayList;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,56 +18,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
 @Controller
-public class ArticuloController {
+public class ArticuloController implements Serializable{
 
+    private static final long serialVersionUID= 1L;
+    
     @Autowired
     DAO articuloDao;
 
-    @GetMapping("aa")
-    public String buscameEstaPagina() {
-        return "agregarArticulos";
-    }
-
-    @GetMapping("otra")
-    public String buscameEstaPagina2() {
-        return "otraJsp";
-    }
-
+    HttpServletRequest req;
+    ArrayList<Articulo> listaDeArticulos;
+    
     @PostMapping("agregar")
     public String agregar(@RequestParam("id") String id, @RequestParam("nombre") String nombre,
-             @RequestParam("envase") String envase, @RequestParam("cantidad") String stock,
-             @RequestParam("tipoDeArticulo") String tipoDeArticulo, @RequestParam("costo") String costo,
-             @RequestParam("margen") String margen, @RequestParam("precio") String precio) {
+            @RequestParam("envase") String envase, @RequestParam("cantidad") String stock,
+            @RequestParam("tipoDeArticulo") String tipoDeArticulo, @RequestParam("costo") String costo,
+            @RequestParam("margen") String margen, @RequestParam("precio") String precio) {
         Articulo articulo = new Articulo();
         articulo.setId(Integer.parseInt(id));
         articulo.setNombre(nombre);
-        articulo.setEnvase(Integer.parseInt(envase));        
+        articulo.setEnvase(Integer.parseInt(envase));
         articulo.setStock(Integer.parseInt(stock));
-        switch (tipoDeArticulo) {
-            case "Frutos Secos":
-                articulo.setTipoDeArticulo(TipoDeArticulo.FRUTOS_SECOS);
-                break;
-            case "Frutas Desecadas":
-                articulo.setTipoDeArticulo(TipoDeArticulo.FRUTAS_DESECADAS);
-                break;
-            case "Semillas":
-                articulo.setTipoDeArticulo(TipoDeArticulo.SEMILLAS);
-                break;
-            default:
-                articulo.setTipoDeArticulo(null);
+        
+        for (TipoDeArticulo tda : TipoDeArticulo.values()) {
+            if (tda.getTipoDeProducto().equals(tipoDeArticulo)) {
+                articulo.setTipoDeArticulo(tda);
+            }
         }
         articulo.setCosto(Float.parseFloat(costo));
-        if (margen == "") {
-            System.out.println("El margen null se convierte a 0");
-        }
-        if (precio.equals("")) {
-            System.out.println("El precio null se convierte a 0");
+        articulo.setPrecioAPartirDelMargen(margen);
+        if (articulo.getMargen() == 0) {
+            articulo.setMargenAPartirDelPrecio(precio);
         }
         System.out.println("");
         System.out.println(articulo);
         System.out.println("");
         articuloDao.crear(articulo);
-        
+
         return "otraJsp";
     }
 
@@ -71,35 +62,28 @@ public class ArticuloController {
         articuloDao.borrar(p.getId());
     }
 
-    @GetMapping("/consultarArticulos")
-    public String consultarArticulos() {
-        System.out.println("Esto funciona?");
-        return "Esto funciona";
+    @GetMapping("consultarArticulos")
+    public ArrayList<Articulo> consularArticulos() {
+        listaDeArticulos = articuloDao.getLista();
+        req.setAttribute("lista", listaDeArticulos);
+        System.out.println("Anduvo el mapping");
+        return listaDeArticulos;
     }
 
     @GetMapping(value = "consultarArticulosPorParam")
-    public String consultarArticulosPorParam(@RequestParam String param) {
-        System.out.println("Esto funciona?");
-        return "Esto funciona";
+    public void consultarArticulosPorParam(@RequestParam String param) {
+        
     }
 
-    public Articulo actualizar(@RequestParam String nombre, @RequestParam int stock, @RequestParam float costo, @RequestParam int margen, @RequestParam float precio) {
-        Articulo articulo = new Articulo();
-        if (!nombre.equals("")) {
-            articulo.setNombre(nombre);
-        }
-        if (stock == 0) {
-            articulo.setStock(stock);
-        }
-        if (costo == 0) {
-            articulo.setCosto(costo);
-        }
-        if (margen == 0) {
-            articulo.setPrecioAPartirDelMargen(margen);
-        }
-        if (!(precio == 0)) {
-            articulo.setMargenAPartirDelPrecio(precio);
-        }
-        return articulo;
+    @PostMapping("actualizar")
+
+    public String actualizar(@RequestParam("texto") String chbxArticulo) {
+        String msj1 = chbxArticulo;
+        System.out.println("Request Param: " + msj1);
+        ArrayList<Articulo> listaArticulos = articuloDao.getLista();
+
+        req.setAttribute("lista", listaArticulos);
+        System.out.println("Objeto Request armado: " + req.toString());
+        return "otraJsp";
     }
 }

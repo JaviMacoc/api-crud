@@ -28,6 +28,9 @@ public class ArticuloDaoImpl implements DAO<Articulo, Integer>{
         String query = "FROM Articulo a";
         List<Articulo> busquedaDeArticulos = entityManager.createQuery(query)                
                 .getResultList();
+        busquedaDeArticulos.forEach((articulo) -> {
+            System.out.println(articulo);
+        });        
         return (ArrayList<Articulo>) busquedaDeArticulos;
     }
     @Override

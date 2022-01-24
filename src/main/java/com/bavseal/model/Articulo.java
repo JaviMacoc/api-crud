@@ -16,7 +16,7 @@ public class Articulo implements Serializable{
     
     @Id
     @Getter @Setter
-    private int Id;
+    private int id;
     @Getter @Setter
     private String nombre;    
     @Getter @Setter
@@ -32,14 +32,14 @@ public class Articulo implements Serializable{
     @Getter @Setter
     private float precio;
     
-    public void setPrecioAPartirDelMargen(int margen){
-        this.setPrecio(this.getCosto()*margen/100);
-        this.setMargen(margen);
+    public void setPrecioAPartirDelMargen(String margen){
+        this.setPrecio(this.getCosto()*Integer.parseInt(margen)/100 + this.getCosto());
+        this.setMargen(Integer.parseInt(margen));
     }
     
-    public void setMargenAPartirDelPrecio(float precio) {
-        this.setMargen((int)Math.round(precio/this.getCosto()*100));
-        this.setPrecio(precio);
+    public void setMargenAPartirDelPrecio(String precio) {
+        this.setMargen((int)Math.round(Float.parseFloat(precio)/this.getCosto()*100 + this.getCosto()));
+        this.setPrecio(Float.parseFloat(precio));
     }
     
 }

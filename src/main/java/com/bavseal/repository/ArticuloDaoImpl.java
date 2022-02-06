@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public class ArticuloDaoImpl implements DAO<Articulo, Integer>{
+public class ArticuloDaoImpl implements EntitiesDAO<Articulo, Integer>{
     
     @PersistenceContext
     EntityManager entityManager;
@@ -35,6 +35,7 @@ public class ArticuloDaoImpl implements DAO<Articulo, Integer>{
     }
     @Override
     public Articulo buscarPorId(Integer id) {
+        //Articulo articulo = entityManager.find(Articulo.class, id);
         String query = "FROM Articulo a WHERE id = :id";
         List<Articulo> busquedaDeArticulos = entityManager.createQuery(query)
                 .setParameter("id", id)

@@ -2,7 +2,7 @@ package com.bavseal.repository;
 
 import java.util.ArrayList;
 
-public interface DAO<E, K>{
+public interface EntitiesDAO<E, K>{
     public void crear(E elemento);
     public ArrayList<E> getLista();
     public E buscarPorId(K id);

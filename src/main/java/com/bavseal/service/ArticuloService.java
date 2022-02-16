@@ -10,7 +10,6 @@ public interface ArticuloService {
     public List<Articulo> consultarArticulos();
     public Articulo buscarPorId(int id) throws RecursoNoEncontradoException;    
     public List<Articulo> buscarPorTipoDeArticulo(TipoDeArticulo tda);    
-    public void borrar(int id);     
-    public void actualizar(Articulo articulo);     
+    public void borrar(int id);        
     public void editar(Articulo articulo) throws RecursoNoEncontradoException;     
 }

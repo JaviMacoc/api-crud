@@ -24,18 +24,6 @@ public class ArticuloController implements Serializable {
     @Autowired
     private DesignadorDeId designadorDeId;
 
-    /*@GetMapping("/agregarArticuloForm")
-    public String agregarArticuloForm(Model model){
-        Articulo articulo = new Articulo();
-        model.addAttribute("articuloNuevo", articulo);
-        return "agregarArticulo";
-    }*/
-
- /*@GetMapping("/listaDeArticulos")
-    public String consultarArticulos(Model model) {
-        model.addAttribute("articulos", articuloService.consultarArticulos());        
-        return "listaArticulos";
-    }*/
     @PostMapping("/agregar")
     public String agregar(@ModelAttribute("articuloNuevo") Articulo articulo) {
         articulo.setId(designadorDeId.designador(articulo));
@@ -63,12 +51,6 @@ public class ArticuloController implements Serializable {
         return "redirect:/articulos/listaDeArticulos";
     }
 
-    /*@GetMapping("actualizarArticuloForm")    
-    public String actualizarArticuloForm(@RequestParam ("articuloId") int id, Model model) throws RecursoNoEncontradoException{
-        Articulo articulo = (Articulo) articuloService.buscarPorId(id);
-        model.addAttribute("articuloUpdt", articulo);        
-        return "actualizarArticulo";
-    }*/
     @PostMapping(value = "actualizar")
     public String actualizar(@RequestParam("id") int id, @RequestParam("nombre") String nombre,
             @RequestParam("envase") int envase,@RequestParam("stock") int stock,

@@ -48,21 +48,7 @@ public class ArticuloServiceImpl implements ArticuloService {
     public void borrar(int id) {        
        articuloDao.deleteById(id);
     }
-    @Override
-    @Transactional
-    public void actualizar(Articulo articulo) {
-        String query = "SELECT a FROM Articulo a WHERE id = :id";
-        Articulo articuloDb = (Articulo) em.createQuery(query).setParameter("id", articulo.getId()).getResultList().get(0);        
-        articuloDb.setNombre(articulo.getNombre());
-        articuloDb.setEnvase(articulo.getEnvase());
-        articuloDb.setStock(articulo.getStock());
-        articuloDb.setTipoDeArticulo(articulo.getTipoDeArticulo());
-        articuloDb.setCosto(articulo.getCosto());
-        articuloDb.setMargen(articulo.getMargen());
-        articuloDb.setPrecio(articulo.getPrecio());        
-        em.merge(articuloDb);        
-    }
-
+    
     @Override
     public void editar(Articulo articulo) throws RecursoNoEncontradoException {
         Articulo articuloDb = articuloDao.findById(articulo.getId()).orElseThrow(

@@ -1,18 +1,19 @@
 package com.bavseal.model;
 
+import lombok.Getter;
+
 public enum TipoDeArticulo {
-    FRUTOS_SECOS ("Frutos Secos"),
-    FRUTAS_DESECADAS ("Frutas Desecadas"),
-    SEMILLAS ("Semillas");
+    FRUTOS_SECOS("Frutos Secos", 0),
+    FRUTAS_DESECADAS("Frutas Desecadas", 1),
+    SEMILLAS("Semillas", 2);
 
-    private final String tipoDeProducto;
+    @Getter
+    private final String nombre;
+    @Getter
+    private final int orden;
 
-
-TipoDeArticulo(String tipoDeProducto){
-    this.tipoDeProducto = tipoDeProducto;
-}
-
-public String getTipoDeProducto(){
-    return tipoDeProducto;
-}
+    private TipoDeArticulo(String nombre, int orden) {
+        this.nombre = nombre;
+        this.orden = orden;
+    }
 }

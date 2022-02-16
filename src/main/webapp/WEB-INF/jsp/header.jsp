@@ -21,9 +21,11 @@
                     <i class="far fa-lemon fa-2x"></i>
                 </a>
                 <ul class="navbar-nav">
-                    <li class="d-flex nav-item justify-content-center"><a href="consultarArticulos" class="nav-link">Articulos</a>
+                    <li class="d-flex nav-item justify-content-center"><a href="/" class="nav-link">Inicio</a>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Clientes</a></li>
+                    <li class="d-flex nav-item justify-content-center"><a href="/articulos/listaDeArticulos" class="nav-link">Articulos</a>
+                    </li>
+                    <li class="nav-item"><a href="/clientes/listaDeClientes" class="nav-link">Clientes</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Facturas</a></li>
                 </ul>
             </div>

@@ -23,11 +23,11 @@
 
     <body>
         <!--Header importado-->
-        <%@include file="header.jsp"%>
+        <%@include file="../header.jsp"%>
         <!--Tabla de Clientes-->
         <div class="container justify-content-center">
             <div class="table-responsive w-md-75 mx-auto">
-                <table class="table table-striped table-hover table-borderless table-sm">
+                <table class="table table-striped table-hover table-borderless table-sm my-3">
                     <thead style="border-bottom: 2px solid #000">
                         <tr>
                             <th>Id</th>
@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-grid justify-content-end mx-auto w-75">
+            <div class="d-grid justify-content-end mx-auto w-75 my-3">
                 <a class="btn btn-outline-primary btn-sm" role="button" href="/clientes/agregarClienteForm">Agregar Cliente <i class="fas fa-plus"></i></a>
             </div>
             <!--Modal Eliminar Articulo-->
@@ -75,11 +75,11 @@
                             <button class="btn-close" data-bs-dismiss="modal"></button>                            
                         </div>
                         <div class="modal-body">
-                            <p>Desea eliminar permanentemente este articulo?</p>                            
+                            <p>Desea eliminar permanentemente este cliente?</p>                            
                         </div>
                         <div class="modal-footer">                            
-                            <a type="button" href="${eliminar}" class="btn btn-danger rouded-pill">Eliminar</a>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
+                            <a type="button" href="${eliminar}" class="btn btn-danger rounded-pill">Eliminar</a>
+                            <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>                            
                         </div>                    
                     </div>                
                 </div>            

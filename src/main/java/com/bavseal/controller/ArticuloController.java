@@ -41,7 +41,7 @@ public class ArticuloController implements Serializable {
         Articulo articulo = new Articulo();
         model2.addAttribute("articulo", articulo);
         model2.addAttribute("tiposDeArticulo", TipoDeArticulo.values());
-        return "listaArticulos";
+        return "/articulos/listaArticulos";
     }
 
     @GetMapping(value = "/eliminar")

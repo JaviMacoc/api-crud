@@ -19,8 +19,8 @@
     <body>
         <%@include file="header.jsp"%>
         <div class="container">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <a href="registroForm" class="btn btn-outline-primary">Registrar Usuario</a>
+            <div class="d-grid gap-2 col-6 mx-auto">                
+                <h2>El usuario <c:out value="${usuario.nombre}"></c:out> ha sido creado correctamente</h2>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

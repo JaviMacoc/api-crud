@@ -21,7 +21,7 @@
         <link href="${cssExt}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <c:import url="header.jsp"></c:import>        
+        <c:import url="../header.jsp"></c:import>        
             <div class="container">
             <form:form action="agregar" method="post" modelAttribute="clienteNuevo" cssClass="w-75 mx-auto">
                 <div class="row g-3">                        
@@ -31,7 +31,7 @@
                         <form:input path="nombre" cssClass="form-control" required="true"/>
                         <div class="invalid-feedback">
                             Debe ingresar el nombre del cliente.
-                        </div>
+                        </div>                        
                     </div>                    
                     <div class="col-12 col-md-6">
                         <form:label path="apellido" cssClass="form-label">Apellido</form:label>

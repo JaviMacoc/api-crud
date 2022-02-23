@@ -23,7 +23,7 @@
 
     <body>
         <!--Header importado-->
-        <%@include file="header.jsp"%>
+        <%@include file="../header.jsp"%>
         <!--Tabla de Articulos-->
         <div class="container justify-content-center">
             <div class="table-responsive w-md-75 mx-auto">
@@ -104,7 +104,7 @@
                             </div>
                             <div class="modal-footer">                            
                                 <input type="submit" class="btn btn-primary" value="Agregar"></input>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
                             </div>
                         </form:form>
                     </div>                
@@ -124,17 +124,20 @@
                             </div>
                             <div class="modal-footer">                            
                                 <input type="submit" class="btn btn-success" value="Actualizar"></a>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
                             </div> 
                         </form>
                     </div>                
                 </div>            
-            </div> 
+            </div>
+            <!--Script BootStrap-->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
             </script>
+            <!--Script JQuery-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <!--Script propio-->
             <script src="/js/articulos.js"></script>
     </body>        
 </html>

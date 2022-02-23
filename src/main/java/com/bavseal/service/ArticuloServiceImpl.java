@@ -60,7 +60,7 @@ public class ArticuloServiceImpl implements ArticuloService {
         articuloDb.setCosto(articulo.getCosto());
         articuloDb.setMargen(articulo.getMargen());
         articuloDb.setPrecio(articulo.getPrecio());
-        articuloDao.save(articuloDb);        
+        articuloDao.save(articuloDb);         
     }
 
 }

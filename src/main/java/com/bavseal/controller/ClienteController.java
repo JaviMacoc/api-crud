@@ -22,7 +22,7 @@ public class ClienteController {
     public String agregarArticuloForm(Model model){
         Cliente cliente = new Cliente();
         model.addAttribute("clienteNuevo", cliente);
-        return "agregarCliente";
+        return "/clientes/agregarCliente";
     }
     
     @PostMapping("/agregar")
@@ -34,7 +34,7 @@ public class ClienteController {
     @GetMapping("/listaDeClientes")
     public String consultarArticulos(Model model) {
         model.addAttribute("clientes", clienteService.consultarClientes());        
-        return "listaClientes";
+        return "/clientes/listaClientes";
     }
     
     @GetMapping(value = "/eliminar")
@@ -46,9 +46,8 @@ public class ClienteController {
     @GetMapping("actualizarClienteForm")    
     public String actualizarClienteForm(@RequestParam ("clienteId") int id, Model model) throws RecursoNoEncontradoException{
         Cliente cliente = (Cliente) clienteService.buscarPorId(id);
-        model.addAttribute("clienteUpdt", cliente);
-         
-        return "actualizarCliente";
+        model.addAttribute("clienteUpdt", cliente);         
+        return "/clientes/actualizarCliente";
     }
     @PostMapping("actualizar")
     public String actualizar(@ModelAttribute("clienteUpdt") Cliente cliente) throws RecursoNoEncontradoException {

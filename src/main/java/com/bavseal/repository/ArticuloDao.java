@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 public interface ArticuloDao extends JpaRepository<Articulo, Integer>{
     
     @Query("SELECT a FROM Articulo a WHERE tipoDeArticulo = :tda")
-    public List<Articulo> buscarPorTipoDeArticulo(@Param("tda") TipoDeArticulo tda);
+    public List<Articulo> buscarPorTipoDeArticulo(@Param("tda") TipoDeArticulo tda);    
 }

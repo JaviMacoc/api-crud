@@ -1,0 +1,8 @@
+body{
+    background-color: rgb(61, 21, 95);
+}
+.bg-img-fs{
+    background: url("../img/fondo2.jpg");
+    background-size: cover;    
+    background-position: center;
+}

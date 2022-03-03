@@ -12,7 +12,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ValidadorEmail.class)
 public @interface ValidEmail {
-    String message() default "<i class=\"fa-solid fa-circle-exclamation\"></i> El formato de email es inválido";
+    String message() default "El formato de email es inválido";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

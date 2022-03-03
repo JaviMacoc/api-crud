@@ -24,20 +24,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+       auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());       
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/articulos/**", "/clientes/**", "/facturas/**").hasRole("ADMIN")                
-                .antMatchers("/articulos/listaDeArticulos", "/clientes/listaDeClientes", "/facturas/listaDeFacturas").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/*", "/css/**", "/js/**", "/img/**")
-                .permitAll().anyRequest().authenticated()
-                //.and()
-                //.formLogin().loginPage("/auth/loginForm").defaultSuccessUrl("/", true)
-                //.failureForwardUrl("/auth/login?error=true").loginProcessingUrl("/auth/login").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/articulos/agregar", "/articulos/actualizar", "/articulos/eliminar","/clientes/**", "/facturas/**").hasAuthority("ROLE_ADMIN")                
+                .antMatchers("/articulos/listaDeArticulos", "/facturas/listaDeFacturas", "/api/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .antMatchers("/*", "/css/**", "/js/**", "/img/**", "/api/**", "/auth/**").permitAll().anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")                
+                .defaultSuccessUrl("/", true).failureForwardUrl("/login")
+                .permitAll()
                 .and()                
-                .logout().logoutSuccessUrl("/auth/login");
-
+                .logout().logoutUrl("/logout").deleteCookies("JSESSIONID").logoutSuccessUrl("/login")                
+                .and()
+                .csrf().disable();
     }
 }

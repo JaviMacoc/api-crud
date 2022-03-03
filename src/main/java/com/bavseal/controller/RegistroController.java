@@ -3,6 +3,8 @@ package com.bavseal.controller;
 import com.bavseal.exceptions.UsuarioExistenteException;
 import com.bavseal.dto.UsuarioDTO;
 import com.bavseal.service.UsuarioServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,11 +28,11 @@ public class RegistroController {
         UsuarioDTO usuarioDto = new UsuarioDTO();
         if(!model.containsAttribute("usuarioDto")){
         model.addAttribute("usuarioDto", usuarioDto);
-        }
+        }        
         return "registro";
     }
 
-    @PostMapping("/registrarUsuarioNuevo")
+    @PostMapping("/registrarUsuario")
     public String registrarUsuario(@Valid @ModelAttribute("usuarioDto") UsuarioDTO usuarioDto, BindingResult result,
             RedirectAttributes attr, Model model) throws UsuarioExistenteException {
         if (result.hasErrors()) {            
@@ -38,8 +40,13 @@ public class RegistroController {
             attr.addFlashAttribute("usuarioDto", usuarioDto);            
             return "redirect:/registroForm";
         } else {
-            model.addAttribute("usuario", usuarioService.registrarUsuarioNuevo(usuarioDto));
-            return "registroCorrecto";
+            usuarioDto.setUsername(usuarioDto.getEmail());
+            List<UsuarioDTO> usuarios = new ArrayList<>();
+            usuarios.add(usuarioDto);
+            usuarioService.registrarUsuario(usuarioDto);            
+            attr.addFlashAttribute("usuarios", usuarios);
+            attr.addFlashAttribute("usuarioDto", usuarioDto);
+            return "redirect:/loginForm";
         }
     }
 }

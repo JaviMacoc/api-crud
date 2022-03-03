@@ -36,11 +36,11 @@ public class ArticuloController implements Serializable {
     }
 
     @GetMapping("/listaDeArticulos")
-    public String consultarArticulos(Model model, Model model2) {
+    public String consultarArticulos(Model model) {
         model.addAttribute("articulos", articuloService.consultarArticulos());
         Articulo articulo = new Articulo();
-        model2.addAttribute("articulo", articulo);
-        model2.addAttribute("tiposDeArticulo", TipoDeArticulo.values());
+        model.addAttribute("articulo", articulo);
+        model.addAttribute("tiposDeArticulo", TipoDeArticulo.values());
         return "/articulos/listaArticulos";
     }
 

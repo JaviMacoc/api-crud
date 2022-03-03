@@ -12,7 +12,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ValidadorConfirmacionPassword.class)
 public @interface ConfirmacionPassword {
-    String message() default "<i class=\"fa-solid fa-circle-exclamation\"></i> No coincide la contraseña";
+    String message() default "No coincide la contraseña";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};    
 }

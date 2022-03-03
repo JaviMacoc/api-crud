@@ -29,26 +29,33 @@
                                     <h6 class="card-title"><strong>Crea un usuario</strong></h6>
                                 </div>
                                 <hr>
-                                <form:form action="registrarUsuarioNuevo" modelAttribute="usuarioDto" method="post">                                    
+                                <form:form action="/registrarUsuario" modelAttribute="usuarioDto" method="post">                                    
+                                    <c:forEach items="${mensaje}" var="mensajes">
+                                        <div class="alert alert-danger m-2">
+                                            <i class="fa-solid fa-circle-exclamation"></i><span class="mx-2"><c:out value="${mensajes}"></c:out></span>
+                                        </div>
+                                    </c:forEach>
+                                    
                                     <form:label path="nombre" for="nombre" cssClass="form-label">Nombre</form:label>
                                     <form:input path="nombre" name="nombre" type="text" cssClass="form-control"/>
-                                    <form:errors path="nombre" cssClass="alert alert-danger" element="div"><i class="fa-solid fa-circle-exclamation"></i>
+                                    <form:errors path="nombre" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div">
                                     </form:errors>
+                                    
                                     <form:label path="apellido" for="apellido" cssClass="form-label">Apellido</form:label>
                                     <form:input path="apellido" name="apellido" type="text" cssClass="form-control"/>
-                                    <form:errors path="apellido" cssClass="error" element="div"/>
-                                    </div>
+                                    <form:errors path="apellido" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div"/>
+                                    
                                     <form:label path="email" for="email" cssClass="form-label">Email</form:label>
                                     <form:input path="email" name="email" type="text" cssClass="form-control"/>
-                                    <form:errors path="email" cssClass="error" element="div"/>  
-                                    </div>
+                                    <form:errors path="email" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div"/>  
+                                   
                                     <form:label path="password" for="password" cssClass="form-label">Contraseña</form:label>
                                     <form:input path="password" name="password" type="password" cssClass="form-control"/>
-                                    <form:errors path="password" cssClass="error" element="div"/> 
-                                    </div>
+                                    <form:errors path="password" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div"/> 
+                                   
                                     <form:label path="passwordConfirmado" for="repetirPass" cssClass="form-label">Confirma la contraseña</form:label>
-                                    <form:input path="passwordConfirmado" name="repetirPass" type="password" cssClass="form-control"/>
-                                    <form:errors/>                                  
+                                    <form:input path="passwordConfirmado" name="repetirPass" type="password" cssClass="form-control mb-2"/>                                    
+                                    <form:errors cssClass="alert alert-danger p-2" cssStyle="font-size: .75em"/>                                    
                                     <hr>
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-success">Registrarse</button>

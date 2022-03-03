@@ -19,10 +19,25 @@
     <body>
         <%@include file="header.jsp"%>
         <div class="container">
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="d-grid gap-2 col-6 mx-auto my-2">
                 <a href="registroForm" class="btn btn-outline-primary">Registrar Usuario</a>
             </div>
+            <div class="d-grid gap-2 col-6 mx-auto my-2">
+                <a href="loginForm" class="btn btn-outline-primary">Login</a>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <c:forEach items="${mensaje}" var="mensajes">
+                    <div class="alert alert-danger m-2">
+                        <i class="fa-solid fa-circle-exclamation"></i><span class="mx-2"><c:out value="${mensajes}"></c:out></span>
+                    </div>
+                </c:forEach>               
+            </div>            
         </div>
+        <div class="container">
+            <c:if test="${session.usuario != null}">
+                <c:out value="${session.usuario != null}"><h4>Bienvenido <c:out value="${session.usuario}" /></h4></c:out>
+            </c:if>
+        </div>            
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>

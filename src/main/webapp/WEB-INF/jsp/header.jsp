@@ -26,7 +26,7 @@
                     <li class="d-flex nav-item justify-content-center"><a href="/articulos/listaDeArticulos" class="nav-link">Articulos</a>
                     </li>
                     <li class="nav-item"><a href="/clientes/listaDeClientes" class="nav-link">Clientes</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Facturas</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Pedidos</a></li>
                 </ul>
             </div>
             <!--Perfil de Admin con Dropdown-Menu-->
@@ -45,7 +45,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>

@@ -11,7 +11,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ValidadorPassword.class)
 public @interface ValidPassword {
-    String message() default "<i class=\"fa-solid fa-circle-exclamation\"></i> La contraseña debe tener al menos una mayúscula, una minúscula, un número y 8 caracteres de largo";
+    String message() default "La contraseña debe tener al menos una mayúscula, una minúscula, un número y 8 caracteres de largo";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

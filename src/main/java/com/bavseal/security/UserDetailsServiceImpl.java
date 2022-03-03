@@ -1,4 +1,3 @@
-
 package com.bavseal.security;
 
 import com.bavseal.model.Usuario;
@@ -10,30 +9,35 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
-    
+public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     UsuarioDao usuarioDao;
-    
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       Usuario usuario = usuarioDao.findByUsername(username);
+        Usuario usuario = usuarioDao.findByUsername(username);        
         UserBuilder builder = null;
         
         if(usuario != null){
             builder = User.withUsername(username);
-            builder.disabled(false);
-            builder.password(usuario.getPassword());
-            builder.authorities(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }else{
+            builder.disabled(false);            
+            builder.password(usuario.getPassword());            
+            builder.authorities(new SimpleGrantedAuthority(usuario.getRol().toString()));
+            builder.accountExpired(false);
+            builder.accountLocked(false);
+            builder.credentialsExpired(false);            
+            //builder.authorities(new SimpleGrantedAuthority(usuario.getRol().toString()));            
+            
+        }else
+         {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
+       
         return builder.build();
-      
-        
     }
-
 }

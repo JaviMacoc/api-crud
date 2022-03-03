@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -30,4 +31,8 @@ public class Cliente implements Serializable {
     private String direccion;
     @Getter @Setter
     private String telefono;
+    @OneToMany
+    @Getter @Setter
+    private Pedido pedido;
+    
 }

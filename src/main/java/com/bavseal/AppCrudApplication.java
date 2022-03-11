@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-public class ApiunoApplication {
+public class AppCrudApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiunoApplication.class, args);
+		SpringApplication.run(AppCrudApplication.class, args);
 	}
 
 }

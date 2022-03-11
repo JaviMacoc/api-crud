@@ -1,10 +1,13 @@
 package com.bavseal.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -34,6 +37,9 @@ public class Articulo implements Serializable{
     private int margen;
     @Getter @Setter
     private float precio;
+    @OneToOne(mappedBy = "articulo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
+    @Getter @Setter
+    private LineaDeItems lineaDeItems;
     
     public void setPrecioAPartirDelMargen(int margen){
         this.setPrecio(this.getCosto()*margen/100 + this.getCosto());

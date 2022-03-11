@@ -42,9 +42,11 @@
                                 <form:form modelAttribute="usuarioDto" action="/login" method="POST">                                                                                                            
                                     <form:label path="username" for="username" cssClass="form-label">Email</form:label>
                                     <form:input path="username" name="username" id="username" type="text" cssClass="form-control"/>
+                                    <form:errors path="username" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div"/>  
 
                                     <form:label path="password" for="password" cssClass="form-label">Contraseña</form:label>
-                                    <form:input path="password" name="password" id="password" type="password" cssClass="form-control"/>                                   
+                                    <form:input path="password" name="password" id="password" type="password" cssClass="form-control"/>
+                                    <form:errors path="password" cssClass="alert alert-danger my-1 p-2" cssStyle="font-size: .75em" element="div"/>  
                                     <hr>
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-primary">Login</button>

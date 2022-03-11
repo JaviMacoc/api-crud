@@ -30,8 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             builder.authorities(new SimpleGrantedAuthority(usuario.getRol().toString()));
             builder.accountExpired(false);
             builder.accountLocked(false);
-            builder.credentialsExpired(false);            
-            //builder.authorities(new SimpleGrantedAuthority(usuario.getRol().toString()));            
+            builder.credentialsExpired(false);                        
             
         }else
          {

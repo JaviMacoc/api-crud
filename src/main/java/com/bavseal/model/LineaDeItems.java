@@ -1,8 +1,11 @@
 package com.bavseal.model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,10 +19,12 @@ public class LineaDeItems implements Serializable {
     @Id
     @Getter @Setter
     private int id;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="articulo")
     @Getter @Setter
     private Articulo articulo;
-    @ManyToOne
+    @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="pedido_id")
     @Getter @Setter
     private Pedido pedido;
     @Getter @Setter

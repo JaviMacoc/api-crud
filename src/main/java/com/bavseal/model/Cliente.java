@@ -1,6 +1,7 @@
 package com.bavseal.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,8 +32,8 @@ public class Cliente implements Serializable {
     private String direccion;
     @Getter @Setter
     private String telefono;
-    @OneToMany
+    @OneToMany(mappedBy="cliente")
     @Getter @Setter
-    private Pedido pedido;
+    private List<Pedido> pedidos;
     
 }

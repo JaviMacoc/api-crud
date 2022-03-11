@@ -65,7 +65,7 @@
                                         <a class="small" href="">Olvidaste tu contraseña?</a>
                                     </div>
                                     <div class="text-center my-2">
-                                        <a class="small" href="loginForm">Ya tienes una cuenta? Inicia sesión!</a>
+                                        <a class="small" href="/login">Ya tienes una cuenta? Inicia sesión!</a>
                                     </div>
                                 </form:form>
                             </div>

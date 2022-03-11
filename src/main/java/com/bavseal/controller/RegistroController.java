@@ -26,24 +26,24 @@ public class RegistroController {
     @GetMapping("/registroForm")
     public String registrarForm(Model model) {
         UsuarioDTO usuarioDto = new UsuarioDTO();
-        if(!model.containsAttribute("usuarioDto")){
-        model.addAttribute("usuarioDto", usuarioDto);
-        }        
+        if (!model.containsAttribute("usuarioDto")) {
+            model.addAttribute("usuarioDto", usuarioDto);
+        }
         return "registro";
     }
 
     @PostMapping("/registrarUsuario")
     public String registrarUsuario(@Valid @ModelAttribute("usuarioDto") UsuarioDTO usuarioDto, BindingResult result,
             RedirectAttributes attr, Model model) throws UsuarioExistenteException {
-        if (result.hasErrors()) {            
+        if (result.hasErrors()) {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.usuarioDto", result);
-            attr.addFlashAttribute("usuarioDto", usuarioDto);            
+            attr.addFlashAttribute("usuarioDto", usuarioDto);
             return "redirect:/registroForm";
         } else {
             usuarioDto.setUsername(usuarioDto.getEmail());
             List<UsuarioDTO> usuarios = new ArrayList<>();
             usuarios.add(usuarioDto);
-            usuarioService.registrarUsuario(usuarioDto);            
+            usuarioService.registrarUsuario(usuarioDto);
             attr.addFlashAttribute("usuarios", usuarios);
             attr.addFlashAttribute("usuarioDto", usuarioDto);
             return "redirect:/loginForm";

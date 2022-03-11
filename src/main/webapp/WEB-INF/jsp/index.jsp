@@ -20,10 +20,10 @@
         <%@include file="header.jsp"%>
         <div class="container">
             <div class="d-grid gap-2 col-6 mx-auto my-2">
-                <a href="registroForm" class="btn btn-outline-primary">Registrar Usuario</a>
+                <a href="/registroForm" class="btn btn-outline-primary">Registrar Usuario</a>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto my-2">
-                <a href="loginForm" class="btn btn-outline-primary">Login</a>
+                <a href="/login" class="btn btn-outline-primary">Login</a>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <c:forEach items="${mensaje}" var="mensajes">

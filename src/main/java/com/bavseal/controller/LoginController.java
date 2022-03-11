@@ -1,17 +1,15 @@
 package com.bavseal.controller;
 
 import com.bavseal.dto.UsuarioDTO;
-import com.bavseal.model.Rol;
 import com.bavseal.model.Usuario;
 import com.bavseal.service.UsuarioService;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,15 +20,18 @@ public class LoginController {
     UsuarioService usuarioService;
 
     @GetMapping("/login")
-    public String loginForm(Model model) {
-        model.addAttribute("rolUsuario", Rol.ROLE_USER);
-        if (!model.containsAttribute("usuarioDto")) {
-            model.addAttribute("usuarioDto", new UsuarioDTO());
+    public String loginForm(Model model, HttpServletRequest request) {
+        if (request.getAttribute("usuarioDto") == null) {
+            if (!model.containsAttribute("usuarioDto")) {
+                model.addAttribute("usuarioDto", new UsuarioDTO());
+            }
+        } else {
+            model.addAttribute("usuarioDto", request.getAttribute("usuarioDto"));
         }
         return "login";
     }
 
-    @GetMapping("/home")
+    @GetMapping("/usuarioLogin")
     public String login(Model model, Authentication auth, HttpSession session) {
         String username;
         if (auth.getName() != null) {

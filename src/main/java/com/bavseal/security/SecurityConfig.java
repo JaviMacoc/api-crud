@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }   
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -29,12 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //Por ahora solo está funcionando con loginPage("login") y sin loginProcessingUrl("x").
         http.authorizeRequests()
                 .antMatchers("/articulos/agregar", "/articulos/actualizar", "/articulos/eliminar","/clientes/**", "/facturas/**").hasAuthority("ROLE_ADMIN")                
                 .antMatchers("/articulos/listaDeArticulos", "/facturas/listaDeFacturas", "/api/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .antMatchers("/*", "/css/**", "/js/**", "/img/**", "/api/**", "/auth/**").permitAll().anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/", true).failureForwardUrl("/login?errors").permitAll()
+                .formLogin().loginPage("/login").defaultSuccessUrl("/", true).failureHandler(new AuthenticationFailureHandlerImpl()).permitAll()
                 .and()                
                 .logout().logoutUrl("/logout").deleteCookies("JSESSIONID").logoutSuccessUrl("/login")                
                 .and()

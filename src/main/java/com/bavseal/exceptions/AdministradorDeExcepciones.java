@@ -31,14 +31,4 @@ public class AdministradorDeExcepciones {
         }
         return redirectView;
     }
-    @ExceptionHandler(value = {UsernameNotFoundException.class})
-    public RedirectView administrarError(UsernameNotFoundException ex, HttpServletRequest request) {
-        RedirectView redirectView = new RedirectView("/loginForm");
-        FlashMap outputFlashMap = RequestContextUtils.getOutputFlashMap(request);
-        if (outputFlashMap != null) {
-            outputFlashMap.put("mensaje", ex.getMessage());
-        }
-        return redirectView;
-    }
-
 }

@@ -35,7 +35,7 @@
                     aria-expanded="false">
                     <img src="https://github.com/mdo.png" width="32" height="32"
                         class="rounded-circle m-1">
-                    <h6 class="d-none d-md-inline-block">Admin</h6>
+                    <h6 class="d-none d-md-inline-block"><c:out value="${sessionScope.usuario.nombre}"></c:out></h6>
                     <div class="dropdown-toggle d-inline mx-1"></div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownUser1">

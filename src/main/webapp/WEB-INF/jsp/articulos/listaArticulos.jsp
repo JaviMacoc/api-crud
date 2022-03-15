@@ -76,7 +76,7 @@
                         <form:form method="get" action="eliminar">
                             <div class="modal-header">                            
                                 <h5 class="modal-title">Eliminar articulo</h5>                            
-                                <button class="btn-close" data-bs-dismiss="modal"></button>                            
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>                            
                             </div>
                             <div class="modal-body">
                                 <p>Desea eliminar permanentemente este articulo?</p>                            
@@ -94,7 +94,7 @@
             <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="modalAgregar">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <form:form action="agregar" method="post" modelAttribute="articulo" cssClass="w-75 mx-auto">
+                        <form:form action="agregar" method="get" modelAttribute="articulo" cssClass="w-75 mx-auto">
                             <div class="modal-header">                            
                                 <h5 class="modal-title">Agregar articulo</h5>                            
                                 <button class="btn-close" data-bs-dismiss="modal"></button>                            
@@ -114,17 +114,17 @@
             <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="modalActualizar">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <form action="actualizar" method="post" id="formActualizar" cssClass="w-75 mx-auto">
+                        <form action="actualizar" method="get" id="formActualizar" cssClass="w-75 mx-auto">
                             <div class="modal-header">                            
                                 <h5 class="modal-title">Actualizar articulo</h5>                            
-                                <button class="btn-close" data-bs-dismiss="modal"></button>                            
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>                            
                             </div>
                             <div class="modal-body">                                
                                 <%@include file="actualizarArticulo.jsp" %>
                             </div>
                             <div class="modal-footer">                            
                                 <input type="submit" class="btn btn-success" value="Actualizar"></a>
-                                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                            
                             </div> 
                         </form>
                     </div>                

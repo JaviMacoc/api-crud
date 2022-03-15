@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row g-3">    
     <div class="col-12 col-md-6">
         <label class="form-label">Id</label>

@@ -8,7 +8,6 @@ import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import com.bavseal.util.DesignadorDeId;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,8 +22,8 @@ public class ArticuloController implements Serializable {
     private ArticuloService articuloService;
     @Autowired
     private DesignadorDeId designadorDeId;
-
-    @PostMapping("/agregar")
+   
+    @GetMapping("/agregar")
     public String agregar(@ModelAttribute("articuloNuevo") Articulo articulo) {
         articulo.setId(designadorDeId.designador(articulo));
         articulo.setPrecioAPartirDelMargen(articulo.getMargen());
@@ -37,21 +36,21 @@ public class ArticuloController implements Serializable {
 
     @GetMapping("/listaDeArticulos")
     public String consultarArticulos(Model model) {
-        model.addAttribute("articulos", articuloService.consultarArticulos());
         Articulo articulo = new Articulo();
+        model.addAttribute("articulos", articuloService.consultarArticulos());
         model.addAttribute("articulo", articulo);
         model.addAttribute("tiposDeArticulo", TipoDeArticulo.values());
         return "/articulos/listaArticulos";
     }
-
+    
     @GetMapping(value = "/eliminar")
     public String eliminar(@RequestParam("id") String id) {
         Integer articuloId = Integer.parseInt(id);
         articuloService.borrar(articuloId);
         return "redirect:/articulos/listaDeArticulos";
     }
-
-    @PostMapping(value = "actualizar")
+  
+    @GetMapping(value = "actualizar")
     public String actualizar(@RequestParam("id") int id, @RequestParam("nombre") String nombre,
             @RequestParam("envase") int envase,@RequestParam("stock") int stock,
             @RequestParam("tipoDeArticulo") TipoDeArticulo tipoDeArticulo, @RequestParam("costo") float costo,

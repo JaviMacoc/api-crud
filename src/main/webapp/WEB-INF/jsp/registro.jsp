@@ -55,7 +55,7 @@
                                    
                                     <form:label path="passwordConfirmado" for="repetirPass" cssClass="form-label">Confirma la contraseña</form:label>
                                     <form:input path="passwordConfirmado" name="repetirPass" type="password" cssClass="form-control mb-2"/>                                    
-                                    <form:errors cssClass="alert alert-danger p-2" cssStyle="font-size: .75em"/>                                    
+                                    <form:errors cssClass="alert alert-danger p-2" cssStyle="font-size: .75em" element="div"/>                                    
                                     <hr>
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-success">Registrarse</button>

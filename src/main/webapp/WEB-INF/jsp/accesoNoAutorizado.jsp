@@ -17,11 +17,9 @@
         <link href="${cssExt}" rel="stylesheet" type="text/css"/> 
     </head>
     <body>
-        <%@include file="header.jsp"%>        
+        <%@include file="header.jsp"%>            
         <div class="container my-5">
-            <c:if test="${sessionScope.usuario != null}">
-                <h4>Bienvenido <c:out value="${sessionScope.usuario.username}" /></h4>
-            </c:if>
+            <h2>No tiene permiso para ingresar a este dominio: <c:out value="${url}"></c:out></h2>
         </div>            
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

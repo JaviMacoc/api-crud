@@ -39,14 +39,13 @@ public class RegistroController {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.usuarioDto", result);
             attr.addFlashAttribute("usuarioDto", usuarioDto);
             return "redirect:/registroForm";
-        } else {
-            usuarioDto.setUsername(usuarioDto.getEmail());
+        } else {            
             List<UsuarioDTO> usuarios = new ArrayList<>();
             usuarios.add(usuarioDto);
             usuarioService.registrarUsuario(usuarioDto);
             attr.addFlashAttribute("usuarios", usuarios);
             attr.addFlashAttribute("usuarioDto", usuarioDto);
-            return "redirect:/loginForm";
+            return "redirect:/login";
         }
     }
 }

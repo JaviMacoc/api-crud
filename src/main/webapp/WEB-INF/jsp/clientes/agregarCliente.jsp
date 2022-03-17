@@ -21,9 +21,15 @@
         <link href="${cssExt}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <c:import url="../header.jsp"></c:import>        
-            <div class="container">
+        <!--Header importado-->
+        <c:import url="../header.jsp"></c:import> 
+            <!--Formulario Agregar Cliente-->
+            <div class="container"> 
+                
             <form:form action="agregar" method="post" modelAttribute="clienteNuevo" cssClass="w-75 mx-auto">
+                <div class="container my-4 ps-0">
+                    <h4 class="col-12">Agregar Cliente</h4>
+                </div>
                 <div class="row g-3">                        
                     <form:hidden path="id"/>
                     <div class="col-12 col-md-6">
@@ -65,7 +71,7 @@
                 <div class="d-flex justify-content-end">                    
                     <button class="btn btn-primary" type="submit">Agregar</button>
                 </div>
-            </form:form>
+            </form:form>            
         </div>
     </body>
 </html>

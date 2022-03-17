@@ -21,9 +21,15 @@
         <link href="${cssExt}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <c:import url="../header.jsp"></c:import>        
+        <!--Header importado-->
+        <c:import url="../header.jsp"></c:import>
+            <!--Formulario Actualizar Cliente-->        
             <div class="container">
-            <form:form action="/clientes/actualizar" method="post" modelAttribute="clienteUpdt" cssClass="w-75 mx-auto">                
+                
+            <form:form action="/clientes/actualizar" method="post" modelAttribute="clienteUpdt" cssClass="w-75 mx-auto">
+                <div class="my-4 ps-0">
+                    <h4>Editar Cliente</h4>
+                </div>
                 <div class="row g-3">                    
                     <form:hidden path="id"/>                                    
                     <div class="col-12 col-md-6">

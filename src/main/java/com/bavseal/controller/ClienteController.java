@@ -3,6 +3,7 @@ package com.bavseal.controller;
 import com.bavseal.exceptions.RecursoNoEncontradoException;
 import com.bavseal.model.Cliente;
 import com.bavseal.service.ClienteService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class ClienteController {
     }
     
     @PostMapping("/agregar")
-    public String agregar(@ModelAttribute("clienteNuevo") Cliente cliente) {
+    public String agregar(@ModelAttribute("clienteNuevo") Cliente cliente) {        
         clienteService.guardar(cliente);
         return "redirect:/clientes/listaDeClientes";
     }
@@ -38,7 +39,7 @@ public class ClienteController {
     }
     
     @GetMapping(value = "/eliminar")
-    public String eliminar(@RequestParam("clienteId") int id) {
+    public String eliminar(@RequestParam("id") int id) {
         clienteService.borrar(id);
         return "redirect:/clientes/listaDeClientes";
     }

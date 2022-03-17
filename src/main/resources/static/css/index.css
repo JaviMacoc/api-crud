@@ -28,3 +28,8 @@ li.nav-item{
     display: flex;
     justify-content: center;
 }
+
+.tdBtn{
+    white-space: nowrap;
+    width: 1%;
+}

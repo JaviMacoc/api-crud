@@ -26,6 +26,9 @@
         <%@include file="../header.jsp"%>
         <!--Tabla de Articulos-->
         <div class="container justify-content-center">
+            <div class="my-4">
+                <h4>Lista de Articulos</h4>
+            </div>
             <div class="table-responsive w-md-75 mx-auto">
                 <table class="table table-striped table-hover table-borderless table-sm">
                     <thead style="border-bottom: 2px solid #000">
@@ -54,11 +57,12 @@
                                 <td class="d-none d-md-table-cell"><c:out value="${articulo.margen}"></c:out></td>
                                 <td><c:out value="${articulo.precio}"></c:out></td>
                                     <!--Botones de Eliminar y Actualizar-->                                                                
-                                    <td><button class="btn btn-outline-dark btnEliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar">                                        
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button><input type="hidden" id="id" value="${articulo.id}"/></td>
-                                <td><button data-bs-toggle="modal" data-bs-target="#modalActualizar" class="btn btn-outline-dark btnActualizar">
-                                        <i class="fas fa-edit"></i>
+                                <td class="tdBtn"><button class="btn btn-outline-dark btnEliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar">                                        
+                                    <i class="fas fa-trash-alt"></i>
+                                    </button><input type="hidden" id="id" value="${articulo.id}"/>
+                                </td>
+                                <td class="tdBtn"><button data-bs-toggle="modal" data-bs-target="#modalActualizar" class="btn btn-outline-dark btnActualizar">
+                                    <i class="fas fa-edit"></i>
                                     </button><input type="hidden" id="id" value="${articulo.id}"/>                                                               
                                 </td>
                             </tr>                            

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,11 +25,11 @@ public class Pedido implements Serializable {
     @Getter @Setter
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="cliente_id")
     @Getter @Setter
     private Cliente cliente;
-    @OneToMany(mappedBy="pedido")
+    @OneToMany(mappedBy="pedido")    
     @Getter @Setter
     private List<LineaDeItems> lineaDeItems;
     @Getter @Setter

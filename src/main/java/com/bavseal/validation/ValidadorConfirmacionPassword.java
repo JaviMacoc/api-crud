@@ -1,4 +1,4 @@
-package com.bavseal.validaciones;
+package com.bavseal.validation;
 
 import com.bavseal.dto.UsuarioDTO;
 import javax.validation.ConstraintValidator;

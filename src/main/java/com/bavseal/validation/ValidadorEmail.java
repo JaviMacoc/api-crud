@@ -1,6 +1,6 @@
-package com.bavseal.validaciones;
+package com.bavseal.validation;
 
-import com.bavseal.validaciones.ValidEmail;
+import com.bavseal.validation.ValidEmail;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;

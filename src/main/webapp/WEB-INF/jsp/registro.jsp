@@ -16,9 +16,8 @@
         <link rel="stylesheet" href="/css/registro.css"/>
     </head>
     <body>        
-        <div class="container my-5">
-            <a class="btn btn-primary" href="/">Inicio</a>            
-            <div class="card overflow-hidden border-0 my-5">
+        <div class="container my-5">            
+            <div class="card overflow-hidden my-5" id="cardLogin">
                 <div class="card-body  p-0">
                     <div class="row">
                         <div class="col-lg-5 d-none d-lg-block bg-img-fs">                               

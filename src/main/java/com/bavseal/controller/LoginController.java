@@ -24,7 +24,7 @@ public class LoginController {
     UsuarioService usuarioService;
 
     @GetMapping("/login")
-    public String loginForm(Model model, HttpServletRequest request) {
+    public String loginForm(Model model) {
         if (!model.containsAttribute("usuarioDto")) {
             model.addAttribute("usuarioDto", new UsuarioDTO());
         }

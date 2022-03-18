@@ -3,8 +3,6 @@ package com.bavseal.controller;
 import com.bavseal.exceptions.UsuarioExistenteException;
 import com.bavseal.dto.UsuarioDTO;
 import com.bavseal.service.UsuarioServiceImpl;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,12 +37,11 @@ public class RegistroController {
             attr.addFlashAttribute("org.springframework.validation.BindingResult.usuarioDto", result);
             attr.addFlashAttribute("usuarioDto", usuarioDto);
             return "redirect:/registroForm";
-        } else {            
-            List<UsuarioDTO> usuarios = new ArrayList<>();
-            usuarios.add(usuarioDto);
-            usuarioService.registrarUsuario(usuarioDto);
-            attr.addFlashAttribute("usuarios", usuarios);
+        } else {
+            usuarioDto.setUsername(usuarioDto.getEmail());
+            usuarioService.registrarUsuario(usuarioDto);            
             attr.addFlashAttribute("usuarioDto", usuarioDto);
+            attr.addFlashAttribute("usuarioRegistrado", usuarioDto);
             return "redirect:/login";
         }
     }

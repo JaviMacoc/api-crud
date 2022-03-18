@@ -1,4 +1,4 @@
-package com.bavseal.validaciones;
+package com.bavseal.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

@@ -1,13 +1,13 @@
 package com.bavseal.dto;
 
 import com.bavseal.model.Rol;
-import com.bavseal.validaciones.ValidEmail;
-import com.bavseal.validaciones.ValidPassword;
+import com.bavseal.validation.ValidEmail;
+import com.bavseal.validation.ValidPassword;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import com.bavseal.validaciones.ConfirmacionPassword;
+import com.bavseal.validation.ConfirmacionPassword;
 import lombok.ToString;
 
 @ConfirmacionPassword

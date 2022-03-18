@@ -1,9 +1,0 @@
-body{    
-    background-image: url("../img/fondo2.jpg");
-    background-size: cover;
-}
-.bg-img-fs{
-    background: url("../img/fondo2.jpg");
-    background-size: cover;    
-    background-position: center;
-}

@@ -1,5 +1,6 @@
-package com.bavseal.validaciones;
+package com.bavseal.validation;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -9,9 +10,9 @@ import javax.validation.Payload;
 
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidadorPassword.class)
-public @interface ValidPassword {
-    String message() default "La contraseña debe tener al menos una mayúscula, una minúscula, un número y 8 caracteres de largo";
+@Constraint(validatedBy = ValidadorEmail.class)
+public @interface ValidEmail {
+    String message() default "El formato de email es inválido";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

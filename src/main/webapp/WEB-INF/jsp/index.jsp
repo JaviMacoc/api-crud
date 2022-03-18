@@ -17,8 +17,30 @@
         <link href="${cssExt}" rel="stylesheet" type="text/css"/> 
     </head>
     <body>
-        <%@include file="header.jsp"%>        
-                  
+        <%@include file="header.jsp"%>  
+        <div class="container my-5">
+            <div class="card p-1">
+                <div class="card-body">                
+                    <h4 class="card-title">APP-CRUD</h4>
+                    <ul>
+                        <li>APP CRUD creada en Java con Springboot, gestionada en Maven.
+                            Basada en el patrón de arquitectura MVC, implementa Spring-JPA para la conectividad con la base de datos,
+                            JSP con las taglibs de JSTL y Spring para generar las vistas dinámicas, y aplica Bootstrap para diseño responsive.
+                        </li>
+                        <li>
+                            Archivo SQL en carpeta resources/sql.
+                        </li>
+                        <li>
+                            Actualmente funcionan las pestañas Articulos y Clientes con sus respectivas funciones
+                        </li>
+                        <li>
+                            Implementado el registro y logueo de usuarios incluyendo filtros para la autenticación 
+                            y la autorización al acceso a la app mediante configuración de Spring Security. 
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>

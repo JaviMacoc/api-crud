@@ -1,4 +1,4 @@
-package com.bavseal.validaciones;
+package com.bavseal.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

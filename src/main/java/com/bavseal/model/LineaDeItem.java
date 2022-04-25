@@ -1,5 +1,8 @@
 package com.bavseal.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,7 +17,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name="lineasDeItems")
-public class LineaDeItems implements Serializable {
+public class LineaDeItem implements Serializable {
 
     @Id
     @Getter @Setter
@@ -23,6 +26,7 @@ public class LineaDeItems implements Serializable {
     @JoinColumn(name="articulo")
     @Getter @Setter
     private Articulo articulo;
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="pedido_id")
     @Getter @Setter

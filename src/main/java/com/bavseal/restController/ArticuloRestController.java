@@ -29,7 +29,7 @@ public class ArticuloRestController {
         } catch (RecursoNoEncontradoException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
+    }  
     
     @GetMapping(value="buscar/todos", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Articulo>> buscarTodos(){        

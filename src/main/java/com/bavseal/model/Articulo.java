@@ -1,5 +1,6 @@
 package com.bavseal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -37,9 +38,10 @@ public class Articulo implements Serializable{
     private int margen;
     @Getter @Setter
     private float precio;
+    @JsonIgnore
     @OneToOne(mappedBy = "articulo", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY )
     @Getter @Setter
-    private LineaDeItems lineaDeItems;
+    private LineaDeItem lineaDeItems;
     
     public void setPrecioAPartirDelMargen(int margen){
         this.setPrecio(this.getCosto()*margen/100 + this.getCosto());

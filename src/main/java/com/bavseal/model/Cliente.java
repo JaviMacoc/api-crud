@@ -1,10 +1,13 @@
 package com.bavseal.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +39,9 @@ public class Cliente implements Serializable {
     private String direccion;
     @Getter @Setter
     private String telefono;
-    @OneToMany(mappedBy = "cliente", cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE})       
+    @JsonManagedReference
+    @OneToMany(mappedBy = "cliente", targetEntity = Pedido.class, cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE},
+            fetch = FetchType.LAZY)       
     @Getter @Setter
     private List<Pedido> pedidos;
     

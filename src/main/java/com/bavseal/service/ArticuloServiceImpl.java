@@ -35,7 +35,7 @@ public class ArticuloServiceImpl implements ArticuloService {
     public Articulo buscarPorId(int id) throws RecursoNoEncontradoException {       
             return articuloDao.findById(id).orElseThrow(
             ()-> new RecursoNoEncontradoException(id));
-    }
+    }   
     
     @Override
     @Transactional

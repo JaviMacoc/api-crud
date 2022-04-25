@@ -58,11 +58,11 @@
                                 <td><c:out value="${articulo.precio}"></c:out></td>
                                     <!--Botones de Eliminar y Actualizar-->                                                                
                                 <td class="tdBtn"><button class="btn btn-outline-dark btnEliminar" data-bs-toggle="modal" data-bs-target="#modalEliminar">                                        
-                                    <i class="fas fa-trash-alt"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                     </button><input type="hidden" id="id" value="${articulo.id}"/>
                                 </td>
                                 <td class="tdBtn"><button data-bs-toggle="modal" data-bs-target="#modalActualizar" class="btn btn-outline-dark btnActualizar">
-                                    <i class="fas fa-edit"></i>
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                     </button><input type="hidden" id="id" value="${articulo.id}"/>                                                               
                                 </td>
                             </tr>                            
@@ -86,8 +86,8 @@
                                 <p>Desea eliminar permanentemente este articulo?</p>                            
                             </div>
                             <div class="modal-footer">                            
-                                <input type="submit" class="btn btn-danger" value="Eliminar"></input>
                                 <input type="hidden" name="id" id="articuloId"/>                                
+                                <input type="submit" class="btn btn-danger" value="Eliminar"></input>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>                                
                             </div>                            
                         </form:form>

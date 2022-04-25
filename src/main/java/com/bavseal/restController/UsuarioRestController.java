@@ -19,7 +19,7 @@ public class UsuarioRestController {
     private UsuarioService usuarioService;
 
     @GetMapping(value = "/username/{username}", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> pruebaGetPorEmail(@PathVariable("username") String username) {
+    public ResponseEntity<Usuario> getPorUsername(@PathVariable("username") String username) {
         try {
             return new ResponseEntity<>(usuarioService.findByUsername(username), HttpStatus.OK);
         } catch (Exception e) {

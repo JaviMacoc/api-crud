@@ -1,5 +1,8 @@
 package com.bavseal.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -25,13 +28,15 @@ public class Pedido implements Serializable {
     @Getter @Setter
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
+    @JsonBackReference
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="cliente_id")
     @Getter @Setter
     private Cliente cliente;
-    @OneToMany(mappedBy="pedido")    
+    @JsonManagedReference
+    @OneToMany(mappedBy="pedido", targetEntity =LineaDeItem.class ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Getter @Setter
-    private List<LineaDeItems> lineaDeItems;
+    private List<LineaDeItem> lineaDeItems;
     @Getter @Setter
     private long total;
 }

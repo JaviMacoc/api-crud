@@ -20,7 +20,7 @@ public class ClienteController {
    ClienteService clienteService;
    
     @GetMapping("/agregarClienteForm")
-    public String agregarArticuloForm(Model model){
+    public String agregarClienteForm(Model model){
         Cliente cliente = new Cliente();
         model.addAttribute("clienteNuevo", cliente);
         return "/clientes/agregarCliente";

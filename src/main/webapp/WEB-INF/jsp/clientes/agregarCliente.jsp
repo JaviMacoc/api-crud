@@ -1,5 +1,4 @@
 <!--Directivas y Taglibs de la vista-->
-<%@page import="com.bavseal.model.Articulo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -22,10 +21,10 @@
     </head>
     <body>
         <!--Header importado-->
-        <c:import url="../header.jsp"></c:import> 
+        <%@include file="../header.jsp"%>
             <!--Formulario Agregar Cliente-->
             <div class="container"> 
-                
+
             <form:form action="agregar" method="post" modelAttribute="clienteNuevo" cssClass="w-75 mx-auto">
                 <div class="container my-4 ps-0">
                     <h4 class="col-12">Agregar Cliente</h4>
@@ -73,5 +72,9 @@
                 </div>
             </form:form>            
         </div>
+        <!--Script BootStrap-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
     </body>
 </html>
